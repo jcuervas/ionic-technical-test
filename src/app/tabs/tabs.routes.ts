@@ -3,34 +3,34 @@ import { TabsPage } from './tabs.page';
 
 export const routes: Routes = [
   {
-    path: 'tabs',
+    path: '',
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'notifications-list',
         loadComponent: () =>
           import('../notification-list/notification-list.page').then((m) => m.NotificationListPage),
       },
       {
-        path: 'tab2',
+        path: 'create-notification',
         loadComponent: () =>
           import('../create-notification/create-notification.page').then((m) => m.CreateNotificationPage),
       },
       {
-        path: 'tab3',
+        path: 'settings',
         loadComponent: () =>
           import('../settings/settings.page').then((m) => m.SettingsPage),
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/notifications-list',
         pathMatch: 'full',
       },
     ],
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/notifications-list',
     pathMatch: 'full',
   },
 ];
