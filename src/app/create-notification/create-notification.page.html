@@ -1,0 +1,13 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+     Create notification
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-input placeholder="Title" fill="outline"></ion-input>
+  <ion-input placeholder="Body" fill="outline"></ion-input>
+  <ion-button (click)="createNotification()">Create notification</ion-button>
+</ion-content>
