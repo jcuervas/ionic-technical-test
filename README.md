@@ -36,4 +36,5 @@ To simulate a loading state, wrap the creation function in a promise and add a d
 > Optional: Improve the UI of the form, feel free to show us your skills.
 
 ### Improvements
-Current notifications are stored in a project fixture. We would like to store them in a database. We would like to use the capacitor storage plugin to store them in the device.
+- Current notifications are stored in a project fixture. We would like to store them in a database. We would like to use the capacitor storage plugin to store them in the device.
+- Test are outdated. We would like to test the notification creation function, so test should be updated so a notification is created and the list of notifications is updated accordingly.
