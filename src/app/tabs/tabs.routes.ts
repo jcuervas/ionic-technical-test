@@ -9,17 +9,17 @@ export const routes: Routes = [
       {
         path: 'tab1',
         loadComponent: () =>
-          import('../notification-list/notification-list.page').then((m) => m.NotificationListPage),
+          import('../tab1/tab1.page').then((m) => m.Tab1Page),
       },
       {
         path: 'tab2',
         loadComponent: () =>
-          import('../create-notification/create-notification.page').then((m) => m.CreateNotificationPage),
+          import('../tab2/tab2.page').then((m) => m.Tab2Page),
       },
       {
         path: 'tab3',
         loadComponent: () =>
-          import('../settings/settings.page').then((m) => m.SettingsPage),
+          import('../tab3/tab3.page').then((m) => m.Tab3Page),
       },
       {
         path: '',

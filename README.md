@@ -1,4 +1,4 @@
-# Welcome to Alten Technical test repository
+# Welcome to Alten technical test repository
 
 This repository aims to check your skills as a developer, so we have some challenges for you to solve.
 Each challenge is in a separate branch, so you can work on them independently.
