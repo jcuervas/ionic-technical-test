@@ -1,0 +1,7 @@
+{
+  "name": "alten-technical-test",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
