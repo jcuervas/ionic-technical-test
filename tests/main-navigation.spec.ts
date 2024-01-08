@@ -13,9 +13,6 @@ test('should navigate to Tab 1 and display its content', async ({ page }) => {
 
 test('should navigate to Tab 2 and display its content', async ({ page }) => {
   await page.click('ion-tab-button[tab="tab2"]');
-
-
-
   await page.waitForSelector('app-tab2');
   const tab2Content = await page.$eval('app-tab2', (el) => el.textContent);
   expect(tab2Content).toContain('Tab 2');
