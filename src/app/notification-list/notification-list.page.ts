@@ -4,13 +4,14 @@ import {IonicModule} from '@ionic/angular';
 import {CommonModule} from '@angular/common';
 import { LocalNotifications } from '@capacitor/local-notifications';
 import { Toast } from '@capacitor/toast';
+import { NotificationItemComponent } from '../components/notification-item/notification-item.component';
 
 @Component({
   selector: 'app-notification-list',
   templateUrl: 'notification-list.page.html',
   styleUrls: ['notification-list.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule],
+  imports: [IonicModule, CommonModule, NotificationItemComponent],
 })
 export class NotificationListPage implements OnInit {
   notifications: LocalNotification[] = [];
@@ -22,7 +23,7 @@ export class NotificationListPage implements OnInit {
     });
   }
 
-  public async readNotification(notification : any){
+  public async readNotificationItem(notification : LocalNotification){
 
     if(notification.status.match("unread")){
       notification.status = "read";
