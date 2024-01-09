@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {NotificationsService} from '../services/notifications.service';
 import {IonicModule} from '@ionic/angular';
 import {CommonModule} from '@angular/common';
+import { LocalNotifications } from '@capacitor/local-notifications';
+import { Toast } from '@capacitor/toast';
 
 @Component({
   selector: 'app-notification-list',
@@ -18,5 +20,34 @@ export class NotificationListPage implements OnInit {
     this.notificationsService.getNotifications().subscribe(notifications => {
       this.notifications = notifications;
     });
+  }
+
+  public async readNotification(notification : any){
+
+    if(notification.status.match("unread")){
+      notification.status = "read";
+
+      const { display } = await LocalNotifications.checkPermissions();
+      console.log("permissions status", display);
+
+      if(display.match("granted")){
+        LocalNotifications.schedule({
+          notifications: [
+            {
+              title: '¡Hola!',
+              body: 'Acabas de marcar la notificación como vista :)',
+              id: 1,
+              schedule: { at: new Date(Date.now())},
+              actionTypeId: '',
+              extra: null,
+            },
+          ],
+        });
+      }else{
+        Toast.show({text:"No has permitido el envío de notificaciones."});
+      }
+      
+      
+    }
   }
 }

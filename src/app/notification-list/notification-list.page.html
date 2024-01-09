@@ -9,7 +9,7 @@
 <ion-content [fullscreen]="true">
   <ion-list>
     @for (notification of notifications; track notification.id) {
-      <ion-item [button]="notification.status === 'unread'">
+      <ion-item [button]="notification.status === 'unread'" (click)="readNotification(notification)">
         <ion-label>
           <h2 [class]="notification.status === 'unread' ? 'text-bold' : ''">{{ notification.title }}</h2>
           <p>{{ notification.body }}</p>
