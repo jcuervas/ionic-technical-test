@@ -24,31 +24,6 @@ export class NotificationListPage implements OnInit {
   }
 
   public async readNotificationItem(notification : LocalNotification){
-
-    if(notification.status.match("unread")){
-      notification.status = "read";
-
-      const { display } = await LocalNotifications.checkPermissions();
-      console.log("permissions status", display);
-
-      if(display.match("granted")){
-        LocalNotifications.schedule({
-          notifications: [
-            {
-              title: '¡Hola!',
-              body: 'Acabas de marcar la notificación como vista :)',
-              id: 1,
-              schedule: { at: new Date(Date.now())},
-              actionTypeId: '',
-              extra: null,
-            },
-          ],
-        });
-      }else{
-        Toast.show({text:"No has permitido el envío de notificaciones."});
-      }
-      
-      
-    }
+    this.notificationsService.readNotification(notification);
   }
 }
