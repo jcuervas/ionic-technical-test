@@ -1,6 +1,10 @@
 import {Component} from '@angular/core';
 import {IonicModule} from '@ionic/angular';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import { NotificationsService } from '../services/notifications.service';
+import { LocalNotifications } from '@capacitor/local-notifications';
+import { Toast } from '@capacitor/toast';
+import { LoadingController } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-create-notification',
@@ -11,10 +15,48 @@ import {ReactiveFormsModule} from '@angular/forms';
 })
 export class CreateNotificationPage {
 
-  constructor() {}
+  form: FormGroup;
+  public isLoading: boolean = false;
+
+  constructor(
+    private notificationsService: NotificationsService,
+    private loadingCtrl: LoadingController
+  ) {
+
+    this.form = new FormGroup({
+      title: new FormControl('', 
+        {validators: [Validators.required]}
+      ),
+      body: new FormControl('', 
+        {validators: [Validators.required]}
+      )
+    });
+  }
 
   createNotification() {
+    this.loadingCtrl.create({
+      message: "Creando notificación",
+    }).then(()=>{
+      this.isLoading = true;
 
+      let localNotification: LocalNotification = {
+        title: this.form.get("title")?.value ,
+        body: this.form.get("body")?.value,
+        date: new Date(),
+        status: 'unread'
+      }
+      setTimeout(() => {
+        this.notificationsService.addNotification(localNotification);
+  
+        this.form.reset();
+    
+        Toast.show({text: "Notificación creada"});
+
+        this.isLoading = false;
+      }, 2000);
+      
+    })
+    
   }
 
 }

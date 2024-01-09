@@ -7,7 +7,12 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-input placeholder="Title" fill="outline"></ion-input>
-  <ion-input placeholder="Body" fill="outline"></ion-input>
-  <ion-button (click)="createNotification()">Create notification</ion-button>
+  @if(form){
+    <form  [formGroup]="form" (ngSubmit)="createNotification()">
+      <ion-input placeholder="Title" fill="outline" formControlName="title"></ion-input>
+      <ion-input placeholder="Body" fill="outline" formControlName="body"></ion-input>
+      <ion-button [disabled]="!this.form.valid || isLoading" type="submit">Create notification</ion-button>
+    </form>
+  }
+  
 </ion-content>
