@@ -14,11 +14,11 @@ import { NotificationItemComponent } from '../components/notification-item/notif
   imports: [IonicModule, CommonModule, NotificationItemComponent],
 })
 export class NotificationListPage implements OnInit {
-  notifications: LocalNotification[] = [];
+  public notifications: LocalNotification[] = [];
   constructor(private notificationsService: NotificationsService) {}
 
   ngOnInit(): void {
-    this.notificationsService.getNotifications().subscribe(notifications => {
+    this.notificationsService.getNotifications().subscribe((notifications) => {      
       this.notifications = notifications;
     });
   }
