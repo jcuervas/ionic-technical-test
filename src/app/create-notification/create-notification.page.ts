@@ -16,6 +16,10 @@ import { LoadingController } from '@ionic/angular/standalone';
 export class CreateNotificationPage {
 
   form: FormGroup;
+
+  /**
+   * Loading del estado para el botón, para no deje enviar más de una vez la misma notificación
+   */
   public isLoading: boolean = false;
 
   constructor(
