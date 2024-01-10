@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Crear Notificación</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="crearNotificacion()">
+    <ion-item>
+      <ion-label position="floating">Título</ion-label>
+      <ion-input [(ngModel)]="tituloNotificacion" name="title" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Cuerpo</ion-label>
+      <ion-input [(ngModel)]="cuerpoNotificacion" name="cuerpo" required></ion-input>
+    </ion-item>
+    <ion-button type="submit" expand="full" [disabled]="cargando">
+      {{ cargando ? 'Cargando...' : 'Crear Notificación' }}
+    </ion-button>
+  </form>
+</ion-content>
+
