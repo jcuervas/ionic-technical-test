@@ -1,0 +1,8 @@
+<ion-item [class.unread]="!notificacion.leido" (click)="marcarComoLeida()">
+  <ion-badge *ngIf="!notificacion.leido" slot="start"></ion-badge>
+  <ion-label>
+    <h2>{{ notificacion.titulo }}</h2>
+    <p [class.bold]="!notificacion.leido">{{ notificacion.cuerpo }}</p>
+    <p>{{ notificacion.fecha | date }}</p>
+  </ion-label>
+</ion-item>
