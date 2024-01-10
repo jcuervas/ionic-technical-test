@@ -19,4 +19,9 @@ export class NotificationListPage implements OnInit {
       this.notifications = notifications;
     });
   }
+
+  changeStatusToRead(notification: any): void {
+    const updatedNotification = {...notification, status: "read"};
+    this.notificationsService.updateNotification(updatedNotification);
+  }
 }
