@@ -11,21 +11,9 @@
       [button]="notification.status === 'unread'"
       (click)="changeStatusToRead(notification)"
     >
-      <ion-label>
-        <h2 [class]="notification.status === 'unread' ? 'text-bold' : ''">
-          {{ notification.title }}
-        </h2>
-        <p>{{ notification.body }}</p>
-      </ion-label>
-      <ion-note slot="end"
-        >{{ notification.date | date: 'dd/MM/yyyy' }}</ion-note
-      >
-
-      <div class="unread-indicator-wrapper" slot="start">
-        @if (notification.status === 'unread') {
-        <div class="unread-indicator"></div>
-        }
-      </div>
+      <app-notification-item
+        [notification]="notification"
+      ></app-notification-item>
     </ion-item>
     }
   </ion-list>
