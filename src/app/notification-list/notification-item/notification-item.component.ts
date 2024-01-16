@@ -1,19 +1,19 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {IonicModule} from '@ionic/angular';
 
 @Component({
   selector: 'app-notification-item',
-  templateUrl: './notification-item.component.html',
   standalone: true,
+  templateUrl: './notification-item.component.html',
   styleUrls: ['./notification-item.component.scss'],
   imports: [IonicModule, CommonModule],
 })
-export class NotificationItemComponent  implements OnInit {
+export class NotificationItemComponent {
   @Input() notification!: LocalNotification;
+  @Output() read = new EventEmitter<void>();
 
-  constructor() { }
-
-  ngOnInit() {}
-
+  onClick(): void {
+    this.read.emit();
+  }
 }
