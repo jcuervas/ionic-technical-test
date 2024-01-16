@@ -1,13 +1,33 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-     Create notification
-    </ion-title>
+    <ion-title> Create notification </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-input placeholder="Title" fill="outline"></ion-input>
-  <ion-input placeholder="Body" fill="outline"></ion-input>
-  <ion-button (click)="createNotification()">Create notification</ion-button>
+  <form [formGroup]="form" (ngSubmit)="createNotification()">
+    <ion-input
+      formControlName="title"
+      placeholder="Title"
+      fill="outline"
+    ></ion-input>
+    <ion-input
+      formControlName="body"
+      placeholder="Body"
+      fill="outline"
+    ></ion-input>
+    <ion-button
+      type="submit"
+      expand="block"
+      [disabled]="form.invalid || isLoading"
+    >
+      @if(isLoading) {
+      <ion-spinner></ion-spinner>
+
+      } @else {
+      <span>Create notification</span>
+
+      }
+    </ion-button>
+  </form>
 </ion-content>
