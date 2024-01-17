@@ -4,15 +4,16 @@ import { of } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid';
 import { LocalNotifications } from '@capacitor/local-notifications';
 import { LocalNotificationsService } from './capacitor/local-notifications.service';
+import { DatabaseService } from './database.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class NotificationsService {
-  constructor(private readonly localNotificationsService: LocalNotificationsService) {}
+  constructor(private readonly localNotificationsService: LocalNotificationsService, private readonly databaseService: DatabaseService) {}
 
   getNotifications() {
-    return of(notifications);
+    return this.databaseService.getAll();
   }
 
   addNotification(notification: LocalNotification) {

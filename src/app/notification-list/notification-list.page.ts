@@ -16,7 +16,7 @@ export class NotificationListPage implements OnInit {
   constructor(private notificationsService: NotificationsService) {}
 
   ngOnInit(): void {
-    this.notificationsService.getNotifications().subscribe(notifications => {
+    this.notificationsService.getNotifications().then(notifications => {
       this.notifications = notifications;
     });
   }

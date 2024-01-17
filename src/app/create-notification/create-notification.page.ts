@@ -35,6 +35,7 @@ export class CreateNotificationPage {
       delay(2000)
     ).subscribe({
       next: () => {
+        this.form.reset();
         this.router.navigate(['/notifications-list'])
       },
       error: (err) => {
